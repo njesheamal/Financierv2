@@ -26,6 +26,8 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 
+
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
@@ -37,6 +39,7 @@ group :development, :test do
   gem "better_errors"
   gem "binding_of_caller"
   gem "pry-rails"
+  gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 end
 
 group :development do
