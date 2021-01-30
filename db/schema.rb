@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_25_061940) do
+ActiveRecord::Schema.define(version: 2021_01_30_192530) do
 
   create_table "accounts", force: :cascade do |t|
     t.bigint "user_id"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(version: 2021_01_25_061940) do
     t.index ["account_id"], name: "index_payments_on_account_id"
   end
 
+  create_table "transaction_payments", force: :cascade do |t|
+    t.integer "transaction_id", null: false
+    t.integer "payment_id", null: false
+    t.float "amount"
+    t.datetime "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_id"], name: "index_transaction_payments_on_payment_id"
+    t.index ["transaction_id"], name: "index_transaction_payments_on_transaction_id"
+  end
+
   create_table "transactions", force: :cascade do |t|
     t.bigint "account_id", null: false
     t.bigint "category_id", null: false
@@ -53,6 +64,15 @@ ActiveRecord::Schema.define(version: 2021_01_25_061940) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["account_id"], name: "index_transactions_on_account_id"
     t.index ["category_id"], name: "index_transactions_on_category_id"
+  end
+
+  create_table "transactions_payments", force: :cascade do |t|
+    t.integer "transaction_id", null: false
+    t.integer "payment_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_id"], name: "index_transactions_payments_on_payment_id"
+    t.index ["transaction_id"], name: "index_transactions_payments_on_transaction_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -68,6 +88,10 @@ ActiveRecord::Schema.define(version: 2021_01_25_061940) do
   end
 
   add_foreign_key "payments", "accounts"
+  add_foreign_key "transaction_payments", "payments"
+  add_foreign_key "transaction_payments", "transactions"
   add_foreign_key "transactions", "accounts"
   add_foreign_key "transactions", "categories"
+  add_foreign_key "transactions_payments", "payments"
+  add_foreign_key "transactions_payments", "transactions"
 end
