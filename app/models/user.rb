@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-    has_many :accounts
+    has_many :accounts, dependent: :destroy
     has_many :transactions, through: :accounts
     has_many :payments, through: :accounts
 
