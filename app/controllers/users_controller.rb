@@ -1,9 +1,9 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
 
-    ## This isn't necessary right? Because there is only one user?
-    # def index
-    # end
+    # This isn't necessary right? Because there is only one user?
+    def index
+    end
     
     def show
         find_user
@@ -16,11 +16,12 @@ class UserController < ApplicationController
     def create
         @user = User.new(user_params)
         if @user.save
-          flash[:success] = "User successfully created"
-          redirect_to @user
+            session[:user_id] = @user.id
+            flash[:success] = "User successfully created"
+            redirect_to '/'
         else
-          flash[:error] = "Something went wrong"
-          render 'new'
+            flash[:error] = "Something went wrong"
+            render 'signup'
         end
     end
 
@@ -41,10 +42,10 @@ class UserController < ApplicationController
     def destroy
         if @user.destroy
             flash[:success] = 'User was successfully deleted.'
-            redirect_to users_path
+            redirect_to user_path
         else
             flash[:error] = 'Something went wrong'
-            redirect_to users_path
+            redirect_to user_path
         end
     end
     
@@ -55,6 +56,6 @@ class UserController < ApplicationController
     end
     
     def user_params
-        params.require(:user).permit(:name, :description, :credit_limit, :balance, :account_number)
+        params.require(:user).permit(:first_name, :last_name, :email, :password)
     end
 end
