@@ -16,4 +16,6 @@ Rails.application.routes.draw do
   #receives the form rendered above
   #creates a new user in the database using the data given by user
   post '/users' => 'users#create'
+
+  resources :accounts
 end
