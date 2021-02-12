@@ -1,6 +1,6 @@
-= simple_form_for '/accounts/new' do |f|
-    = f.input :name
-    = f.input :description, as: :text
-    = f.input :credit_limit
-    = f.input :account_number
+= simple_form_for @account do |f|
+    = f.input :name, :label => 'Nickname'
+    = f.input :description
+    = f.input :credit_limit, :label => 'Credit Limit'
+    = f.input :account_number, required: true, wrapper_html: { class: 'form-group' }, :label => 'Credit Card Number', :input_html => { class: 'form-control' }, :placeholder => 'xxxx-xxxx-xxxx-xxxx'
     = f.button :submit

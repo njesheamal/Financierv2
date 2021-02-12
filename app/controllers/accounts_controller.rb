@@ -8,11 +8,16 @@ class AccountsController < ApplicationController
     end
 
     def new
-        @account = Account.new
+        @account = current_user.accounts.build
     end
     
     def create
-        @account = Account.new(account_params)
+        @account = current_user.accounts.build(account_params)
+        if @account.save
+            redirect_to @account
+        else
+            render 'new'
+        end
     end
 
     def edit
