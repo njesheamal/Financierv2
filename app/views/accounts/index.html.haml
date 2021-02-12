@@ -1,0 +1,14 @@
+.wrapper_with_padding
+    #accounts.clearfix
+        - unless @accounts.blank?
+
+            - @accounts.each do |account|
+                %a{href: (url_for [account])}
+                    .account
+                        %p.name= link_to account.name, account
+                        %p.date= time_ago_in_words(account.created_at)
+                        %p.account_number= truncate(account.account_number, length:4)
+        - else 
+            %h2 Add an Account!
+            %p Start Managing Your Accounts here...
+            %button= link_to "Add Account", new_account_path

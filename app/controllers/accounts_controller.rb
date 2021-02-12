@@ -21,15 +21,19 @@ class AccountsController < ApplicationController
     end
 
     def edit
-
     end
 
     def update
-
+        if @account.update(account_params)
+            redirect_to @account
+        else
+            render 'edit'
+        end
     end
 
     def destroy
-
+        @account.destroy
+        redirect_to accounts_path
     end
 
     private

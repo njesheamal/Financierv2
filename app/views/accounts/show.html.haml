@@ -1,0 +1,7 @@
+%h1= @account.name
+%p= @account.description
+%p= @account.account_number
+%p= @account.credit_limit
+
+= link_to "Edit", edit_account_path(@account), class: "button"
+= link_to "Delete", account_path(@account), method: :delete, data: { confirm: "Are you sure?" }, class: "button"
