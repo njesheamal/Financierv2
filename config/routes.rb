@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   resources :accounts
+  resources :transactions
 end
