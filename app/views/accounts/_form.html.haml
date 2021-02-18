@@ -2,5 +2,5 @@
     = f.input :name, :label => 'Nickname'
     = f.input :description
     = f.input :credit_limit, :label => 'Credit Limit'
-    = f.input :account_number, required: true, wrapper_html: { class: 'form-group' }, :label => 'Credit Card Number', :input_html => { class: 'form-control' }, :placeholder => 'xxxx-xxxx-xxxx-xxxx'
+    = f.input :account_number, as: :numeric, required: true, wrapper_html: { class: 'form-group' }, :label => 'Credit Card Number', :input_html => { class: 'form-control' }
     = f.button :submit

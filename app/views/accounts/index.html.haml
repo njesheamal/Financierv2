@@ -7,7 +7,7 @@
                     .account
                         %p.name= link_to account.name, account
                         %p.date= time_ago_in_words(account.created_at)
-                        %p.account_number= truncate(account.account_number, length:4)
+                        %p.account_number= truncate("#{account.account_number}", length:7)
         - else 
             %h2 Add an Account!
             %p Start Managing Your Accounts here...

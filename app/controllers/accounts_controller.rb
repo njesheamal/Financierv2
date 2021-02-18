@@ -2,6 +2,7 @@ class AccountsController < ApplicationController
     before_action :find_account, only: [:show, :edit, :update, :destroy]
 
     def index
+        @accounts = Account.where(user_id: current_user)
     end
 
     def show
