@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   #creates a new user in the database using the data given by user
   post '/users' => 'users#create'
 
-  resources :accounts
-  resources :transactions
+  resources :accounts do
+    resources :transactions
+  end
 end

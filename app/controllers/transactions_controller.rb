@@ -1,21 +1,23 @@
 class TransactionsController < ApplicationController
+    before_action :get_account
     before_action :find_transaction, only: [:show, :edit, :update, :destroy]
 
+
     def index
-        @transactions = transaction.where(user_id: current_user)
+        @transactions = @account.transactions
     end
 
     def show
     end
 
     def new
-        @transaction = current_user.transactions.build
+        @transaction = @account.transactions.build
     end
 
     def create
-        @transaction = current_user.transactions.build(transaction_params)
+        @transaction = @account.transactions.build(transaction_params)
         if @transaction.save
-            redirect_to @transaction
+            redirect_to account_transactions_path(@transaction)
         else
             render 'new'
         end
@@ -26,7 +28,7 @@ class TransactionsController < ApplicationController
 
     def update
         if @transaction.update(transaction_params)
-            redirect_to @transaction
+            redirect_to account_transaction_path(@transaction)
         else
             render 'edit'
         end    
@@ -34,13 +36,16 @@ class TransactionsController < ApplicationController
 
     def destroy
         @transaction.destroy
-        redirect_to transactions_path 
+        redirect_to account_transactions_path(@transaction)
     end
 
     private
+    def get_account
+        @account = Account.find(params[:account_id])
+    end
 
     def find_transaction
-        @transaction = Transaction.find(params[:id])
+        @transaction = @account.posts.find(params[:id])
     end
 
     def transaction_params
