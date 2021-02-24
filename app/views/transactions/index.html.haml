@@ -1,8 +1,6 @@
-.wrapper_with_padding
-    #transactions.clearfix
-        - @transaction.each do |transaction|
-            %a{href: (url_for [transaction])}
-                .transaction
-                    %p.date= link_to transaction.created_at, transaction
-                    %p.amount= transaction.amount
-                    %p.description= truncate("#{transaction.description}", length:7)
+%h1 This is your transaction!
+%ul
+    - @transactions.each do |transaction|
+        %li= transaction.created_at
+        %li= transaction.amount
+        %li= transaction.description

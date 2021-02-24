@@ -17,7 +17,7 @@ class TransactionsController < ApplicationController
     def create
         @transaction = @account.transactions.build(transaction_params)
         if @transaction.save
-            redirect_to account_transactions_path(@transaction)
+            redirect_to account_transactions_path(@account)
         else
             render 'new'
         end
@@ -28,7 +28,7 @@ class TransactionsController < ApplicationController
 
     def update
         if @transaction.update(transaction_params)
-            redirect_to account_transaction_path(@transaction)
+            redirect_to account_transaction_path(@account)
         else
             render 'edit'
         end    
@@ -36,7 +36,7 @@ class TransactionsController < ApplicationController
 
     def destroy
         @transaction.destroy
-        redirect_to account_transactions_path(@transaction)
+        redirect_to account_transactions_path(@account)
     end
 
     private
