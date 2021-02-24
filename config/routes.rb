@@ -19,5 +19,6 @@ Rails.application.routes.draw do
 
   resources :accounts do
     resources :transactions
+    resources :payments
   end
 end
