@@ -23,3 +23,21 @@
     render :new
   end
 # 5. Use the whenever gem to change a payment's status to true once 30 days have elapsed
+
+#= simple_form_for @account do |f|
+    = f.input :title, :label => 'Account Title'
+    = f.input :description, :label => 'Item/Service Description'
+        = f.simple_fields_for :transaction do |new_transaction|
+        = new_transaction.input :amount, :label => 'Transaction Amount'
+        = new_transaction.input :description, :label => 'Item/Service Description'
+    = f.button :submit
+
+    # You want to create a new transaction
+    # But you want to associate it with an account
+
+    # Option 1
+    # In the transaction form, give the user a drop down menu for an account choice (I think its called = options_from_collection_for_select collection, value_method, text_method, {})
+
+    # Option 2
+    # From the account show page, make a link to "create new transaction"
+    # That would be a nested route that looks something like 

@@ -1,4 +1,6 @@
-= simple_form_for :transaction do |f|
+= simple_form_for ([@account, @transaction]) do |f|
     = f.input :amount, :label => 'Transaction Amount'
     = f.input :description, :label => 'Item/Service Description'
     = f.button :submit
+
+

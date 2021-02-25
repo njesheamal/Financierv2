@@ -1,3 +1,5 @@
 %h1= @current_user.first_name
 %p= @transaction.amount
 %p= @transaction.description
+
+= link_to "Make a Payment", new_account_payment_path(@transaction), class: "button"
