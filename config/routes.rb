@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # resources :users
 
+  root 'welcome#index'
   #THESE FORMS ARE FOR LOGGING IN/OUT
   #renders a form in the browser
   get '/login' => 'sessions#new'
