@@ -4,23 +4,31 @@ class PaymentsController < ApplicationController
     
     def index
         @payments = @account.payments
-    end
+    end 
 
     def show
     end
     
     def new
-        @payment = @account.payments.build
+        @transaction = Transaction.find_by(id: params[:transaction_id])
+        @account = Account.find_by(id: params[:account_id])
+        @payment = @transaction.payments.build
     end
 
     def create
-        @payment = @account.payments.build(payment_params)
+        #? What happens if a users payment, exceeds the trnsaction amount?
+        #? What happens if the payment date is wrong?
+        @transaction = Transaction.find_by(id: params[:transaction_id])
+        @payment = Payment.new(payment_params)
+        
+
         if @payment.save
-          flash[:success] = "You successfully made a payment!"
-          redirect_to account_payments_path(@account)
+            @transaction.payments << @payment
+            flash[:success] = "You successfully made a payment!"
+            redirect_to account_transaction_payment_path(@account)
         else
-          flash[:error] = "Something went wrong"
-          render 'new'
+            flash[:error] = "Something went wrong"
+            render 'new'
         end
     end
 
