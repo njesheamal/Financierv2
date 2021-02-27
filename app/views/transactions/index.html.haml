@@ -2,6 +2,7 @@
 %ul
     - @transactions.each do |transaction|
         %li= transaction.created_at
-        %li= transaction.amount
-        %li= transaction.description
-        = link_to "Make a Payment", new_account_payment_path(@account), class: "button"
+        %p= transaction.amount
+        %p= transaction.description
+        %p= link_to "Add a Payment", new_account_payment_path(@account), class: "button"
+        -# %p= link_to "Take a Peek", account_transaction_path(transaction)
