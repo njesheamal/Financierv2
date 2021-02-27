@@ -4,3 +4,4 @@
         %li= transaction.created_at
         %li= transaction.amount
         %li= transaction.description
+        = link_to "Make a Payment", new_account_payment_path(@account), class: "button"

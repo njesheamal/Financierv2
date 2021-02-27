@@ -15,10 +15,12 @@ class TransactionsController < ApplicationController
     end
 
     def create
-        @transaction = @account.transactions.build(transaction_params)
+        @transaction = Transaction.new(transaction_params)
         if @transaction.save
+            flash[:success] = "You successfully added a transaction!"
             redirect_to account_transactions_path(@account)
         else
+            flash[:error] = "Something went wrong"
             render 'new'
         end
     end
@@ -44,11 +46,15 @@ class TransactionsController < ApplicationController
         @account = Account.find(params[:account_id])
     end
 
+    # def get_category
+        
+    # end
+
     def find_transaction
         @transaction = @account.transactions.find(params[:id])
     end
 
     def transaction_params
-        params.require(:transaction).permit(:amount, :description, :account_id)
+        params.require(:transaction).permit(:amount, :description, :account_id, :category_id)
     end
 end
