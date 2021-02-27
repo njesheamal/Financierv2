@@ -1,0 +1,8 @@
+%h1 Your Payments!
+%ul
+    - @payments.each do |payment|
+        %p= payment.date
+        %li= payment.amount
+        %li= payment.description
+        -# %p= link_to "Take a Peek", account_payment_path(@account)
+        -# %p= link_to "Make a Payment", transaction_payment_path(@account), class: "button"
