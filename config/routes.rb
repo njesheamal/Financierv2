@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   #ends the session 
   get 'logout' => 'sessions#destroy'
+  #OAuth
+  get '/auth/:provider/callback' => 'sessions#omniauth'
   #THESE FORMS ARE FOR SIGNING UP
   #renders a form in the browser
   get '/signup' => 'users#new'

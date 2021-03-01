@@ -26,8 +26,11 @@ gem 'simple_form', '~> 5.0', '>= 5.0.3'
 
 gem 'haml-rails', '~> 2.0', '>= 2.0.1'
 
+gem 'omniauth'
 
+gem 'dotenv-rails'
 
+gem 'omniauth-google-oauth2'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
