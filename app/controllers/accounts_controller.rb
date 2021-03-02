@@ -15,9 +15,9 @@ class AccountsController < ApplicationController
     def create
         @account = current_user.accounts.build(account_params)
         if @account.save
-            redirect_to @account
+            redirect_to @account, notice: "You have successfully created an Account!"
         else
-            render 'new'
+            render 'new', notice: "Something went wrong"
         end
     end
 
@@ -26,9 +26,9 @@ class AccountsController < ApplicationController
 
     def update
         if @account.update(account_params)
-            redirect_to @account
+            redirect_to @account, notice: "Success!"
         else
-            render 'edit'
+            render 'edit', notice: "Something went wrong"
         end
     end
 

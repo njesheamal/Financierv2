@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
             #save the user id in the browsers cookies
             #this keeps the user logged in as they navigate the app
             session[:user_id] = @user.id
+            flash[:notice] = "Success!"
             redirect_to '/'
         else
             flash[:error] = "Something went wrong"
