@@ -16,12 +16,11 @@ class PaymentsController < ApplicationController
     end
 
     def create
-        #? What happens if a users payment, exceeds the trnsaction amount?
+        #? What happens if a users payment, exceeds the transaction amount?
         #? What happens if the payment date is wrong?
         @transaction = Transaction.find_by(id: params[:transaction_id])
         @payment = Payment.new(payment_params)
         
-
         if @payment.save
             @transaction.payments << @payment
             flash[:success] = "You successfully made a payment!"
@@ -70,3 +69,6 @@ class PaymentsController < ApplicationController
     end
     
 end
+
+
+
