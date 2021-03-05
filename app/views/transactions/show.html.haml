@@ -2,4 +2,4 @@
 %p= @transaction.amount
 %p= @transaction.description
 
-= link_to "Add a Payment", new_account_payment_path(@account), class: "button"
+= link_to "Add a Payment", new_account_transaction_payment_path(@account, @transaction), class: "button"

@@ -3,5 +3,5 @@ class Payment < ApplicationRecord
   has_many :transactions_payment
   has_many :purchases, through: :transactions_payment
 
-  validates :amount, presence: true {message: "Must have an amount"}
+  validates :amount, presence: {message: "Must have an amount"}
 end

@@ -4,6 +4,7 @@ class Account < ApplicationRecord
   has_many :payments
 
   validates :name, uniqueness: {message: "Nickname must be unique"}
-  validates :account_number, uniqueness: true, length: { is: 9, wrong_length: "Please enter a 9 digit number"}
+  validates :account_number, uniqueness: {message: "Account number must be unique"}
   validates :credit_limit, presence: {message: "Please enter your credit limit"}
+  validates_length_of :account_number, within: 9..16, on: :create, message: "Must be at least 9 digits"
 end

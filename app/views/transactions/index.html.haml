@@ -1,4 +1,5 @@
-%h1 This is your transaction!
+%h1 These are your transactions!
+= link_to "Create Transaction", new_account_transaction_path(@account), class: "button"
 %ul
     - @transactions.each do |transaction|
         %li= transaction.created_at
