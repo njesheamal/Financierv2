@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post '/login' => 'sessions#create'
   #ends the session 
   get 'logout' => 'sessions#destroy'
+  #route unnaccessible to unregistered users
+  get 'authorize' => 'sessions#page_requires_login'
   #OAuth
   get '/auth/:provider/callback' => 'sessions#omniauth'
   #THESE FORMS ARE FOR SIGNING UP

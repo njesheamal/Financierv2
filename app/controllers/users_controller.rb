@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    skip_before_action :authorize, only: [:new, :create]
     before_action :find_user, only: [:show, :edit, :update, :destroy]
 
     # This isn't necessary right? Because there is only one user?

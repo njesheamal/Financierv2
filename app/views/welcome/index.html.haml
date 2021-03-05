@@ -1,7 +1,10 @@
 %h1 WELCOME TO FINANCIER!
 %p Already a member?
 %p Here, you can manage your finances!
-%button= link_to "Enter", accounts_path
+- if logged_in?
+    %button= link_to "Enter", accounts_path
+- else
+    %button= link_to "Enter", '/login'
 
 %br/
 
