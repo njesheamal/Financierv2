@@ -1,24 +1,28 @@
-# README
+# Financierv2 README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This application’s purpose is to aid the user in managing their credit card usage.
 
-Things you may want to cover:
+## Features
 
-* Ruby version
+Within this application, a user can add a credit card account, make transactions, make payments, and view their largest purchases.
 
-* System dependencies
+## Installation
 
-* Configuration
+Clone the application to your local environment and use the bundler gem to install all of the project's gems.
 
-* Database creation
+```bash
+bundle install
+```
+This application uses ruby '2.6.1' and 'rails', '~> 6.1.1'
 
-* Database initialization
+## Roadmap
 
-* How to run the test suite
+You can expect the application's front-end to be updated in the future.
 
-* Services (job queues, cache servers, search engines, etc.)
+## Acknowledgments
 
-* Deployment instructions
+Thanks, Foo.
 
-* ...
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
