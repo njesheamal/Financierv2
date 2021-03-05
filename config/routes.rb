@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   #creates a new user in the database using the data given by user
   post '/users' => 'users#create'
 
+  #show page for the biggest transaction category
+  get 'spending' => 'accounts#big_spend'
+
   resources :accounts do
     resources :transactions do
       resources :payments

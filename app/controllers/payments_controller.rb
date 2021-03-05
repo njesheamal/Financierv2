@@ -24,7 +24,7 @@ class PaymentsController < ApplicationController
         if @payment.save
             @transaction.payments << @payment
             flash[:success] = "You successfully made a payment!"
-            redirect_to account_transaction_payment_path(@account)
+            redirect_to account_transaction_payment_path(@account, @transaction, @payment)
         else
             flash[:error] = "Something went wrong"
             render 'new'
@@ -65,7 +65,7 @@ class PaymentsController < ApplicationController
     end
 
     def payment_params
-        params.require(:payment).permit(:account_id, :date, :amount, :description)
+        params.require(:payment).permit(:account_id, :transaction_ids, :date, :amount, :description)
     end
     
 end

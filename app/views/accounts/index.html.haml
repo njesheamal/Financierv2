@@ -1,5 +1,6 @@
 .wrapper_with_padding
     #accounts.clearfix
+        %button= link_to "Add Account", new_account_path
         - unless @accounts.blank?
 
             - @accounts.each do |account|
