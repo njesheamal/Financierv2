@@ -7,3 +7,7 @@
         %p= transaction.description
         %p= link_to "Add a Payment", new_account_transaction_payment_path(@account, transaction), class: "button"
         %p= link_to "Take a Peek", account_transaction_path(@account, transaction)
+%br/
+%br/
+%br/
+%button= link_to "Spending Overview", spending_path(@account, @transaction)

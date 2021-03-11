@@ -37,10 +37,6 @@ class AccountsController < ApplicationController
         redirect_to accounts_path
     end
 
-    def big_spend
-        @account = Account.biggest_purchase
-    end
-
     private
 
     def account_params
