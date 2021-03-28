@@ -6,6 +6,8 @@ class Account < ApplicationRecord
   # scope :spend_category, -> { joins(:transactions).merge(Transaction.transaction_categories.first)}
   # scope :biggest_purchase, -> { joins(:transactions).merge(Transaction.most_expensive_transaction)}
 
+  scope :active, -> { where(:status => true)}
+
   validates :name, uniqueness: {message: "Nickname must be unique"}
   validates :account_number, uniqueness: {message: "Account number must be unique"}
   validates :credit_limit, presence: {message: "Please enter your credit limit"}
