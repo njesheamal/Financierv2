@@ -1,5 +1,5 @@
 %h2 Your Transaction!
-%p= @transaction.amount
+%p= number_to_currency(@transaction.amount)
 %p= @transaction.description
 
 = link_to "Add a Payment", new_account_transaction_payment_path(@account, @transaction), class: "button"

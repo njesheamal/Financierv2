@@ -1,8 +1,9 @@
 = simple_form_for ([@account, @transaction]) do |f|
     = f.hidden_field :account_id, value: @account.id
-    = f.input :amount, :label => 'Transaction Amount'
-    = f.input :description, :label => 'Item/Service Description'
-    = f.input :category_id, as: :select, collection: Category.all
+    %p= f.input :amount, :label => 'Transaction Amount'
+    %p= f.input :description, :label => 'Item/Service Description'
+    %p= f.input :category_id, as: :select, collection: Category.all
+    %p= f.date_field :date, :label => 'Date of Transaction'
     = f.button :submit
 
 

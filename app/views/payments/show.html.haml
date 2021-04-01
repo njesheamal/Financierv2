@@ -1,6 +1,10 @@
 %h1 Your Payment!
 %p= @payment.amount
 %p= @payment.description
-%p= @payment.due_date
+%br/
+%br/
+%br/
+%button= link_to "Payments", account_transaction_payments_path(@transaction, @payment)
+
 
 -# = link_to "Pay this off?", new_transaction_payment_path(@account), class: "button"
