@@ -5,10 +5,8 @@ class Transaction < ApplicationRecord
     has_many :payments, through: :transactions_payment
 
     scope :biggest_purchase, -> {where(amount: self.maximum(:amount))}
+
+
     # scope :transaction_categories, -> { joins(:category).merge(Category.order(priority: :desc))}
     validates :amount, presence: {message: "Must have an amount"}
-
-    # def big_spend
-    #     Transaction.joins(:category).merge(Category.order(priority: :desc))
-    # end
 end

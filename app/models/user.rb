@@ -7,7 +7,6 @@ class User < ApplicationRecord
     # validates :first_name, :last_name, :email, presence: true
     # validates :email, :unique =>  true
 
-    # Use binding.pry here to inspect the auth hash
     def self.from_omniauth(auth)
         where(email: auth.info.email).first_or_initialize do |user|
           user.first_name = auth.info.first_name

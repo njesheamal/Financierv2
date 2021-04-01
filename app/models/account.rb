@@ -2,6 +2,7 @@ class Account < ApplicationRecord
   belongs_to :user
   has_many :transactions
   has_many :payments
+  has_many :categories, through: :transactions
 
   # scope :spend_category, -> { joins(:transactions).merge(Transaction.transaction_categories.first)}
   # scope :biggest_purchase, -> { joins(:transactions).merge(Transaction.most_expensive_transaction)}
