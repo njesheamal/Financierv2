@@ -4,4 +4,6 @@ class Payment < ApplicationRecord
   has_many :purchases, through: :transactions_payment
 
   validates :amount, presence: {message: "Must have an amount"}
+
+  scope :paid, -> (amount) { where(:amount => amount )}
 end
