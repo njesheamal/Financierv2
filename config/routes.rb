@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   post '/users' => 'users#create'
 
   #show page for the biggest transaction category
-  get 'spending' => 'transactions#big_spend'
+  get '/transactions/spending' => 'transactions#big_spend'
 
   resources :accounts do
     resources :transactions do
