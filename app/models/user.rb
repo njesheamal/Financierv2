@@ -4,8 +4,8 @@ class User < ApplicationRecord
     has_many :payments, through: :accounts
 
     has_secure_password
-    # validates :first_name, :last_name, :email, presence: true
-    # validates :email, :unique =>  true
+    validates :first_name, :last_name, :email, presence: true
+    validates :email, :uniqueness =>  true
 
     def self.from_omniauth(auth)
         where(email: auth.info.email).first_or_initialize do |user|

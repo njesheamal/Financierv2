@@ -7,6 +7,7 @@ class PaymentsController < ApplicationController
     end 
 
     def show
+        @transaction = Transaction.find_by(id: params[:transaction_id])
     end
     
     def new
