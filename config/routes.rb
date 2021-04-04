@@ -26,9 +26,9 @@ Rails.application.routes.draw do
   get '/transactions/spending' => 'transactions#big_spend'
 
   resources :accounts do
-    resources :transactions do
-      resources :payments
-    end
+    resources :categories
+    resources :transactions
+    resources :payments
   end
 
 
