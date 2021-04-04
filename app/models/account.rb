@@ -1,5 +1,6 @@
 class Account < ApplicationRecord
   belongs_to :user
+  has_many :statements
   has_many :transactions
   has_many :payments
   has_many :categories, through: :transactions

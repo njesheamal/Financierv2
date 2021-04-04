@@ -42,35 +42,47 @@ puts "#{User.count} Users have been created."
         name: Faker::DcComics.hero,
         description: Faker::Business.credit_card_type,
         credit_limit: Faker::Number.number(digits: 5),
-        account_number: Faker::Bank.account_number(digits: 9)  
+        account_number: Faker::Bank.account_number(digits: 13)  
     )
 end
 
 puts "#{Account.count} Accounts have been created."
 
-7.times do 
+12.times do
+    Statement.create!(
+        account_id: Faker::Number.between(from: Account.first.id, to: Account.last.id),
+        balance: Faker::Number.between(from: Account.first.credit_limit, to: Account.last.credit_limit),
+        description: Faker::Hipster.sentences(number: 1),
+        min_payment: Faker::Commerce.price,
+        fees: "0",
+        payment_duedate: Faker::Date.forward(days: 30)
+    )
+end
+
+puts "#{Statement.count} Statements have been created!"
+
+12.times do 
     Category.create!(
-        title: Faker::DcComics.hero
+        title: Faker::Commerce.department(max: 1, fixed_amount: true)
     )
 end
 puts "#{Category.count} Categories have been created."
 
 
-50.times do
+10.times do
     Transaction.create!(
         account_id: Faker::Number.between(from: Account.first.id, to: Account.last.id),
         category_id: Faker::Number.between(from: Category.first.id, to: Category.last.id),
         amount: Faker::Commerce.price,
-        # category: Faker::Commerce.department,
         description: Faker::Commerce.product_name,
         date: Faker::Date.backward(days: 23)   #! why?
 
     )
 end
 
+puts "#{Transaction.count} Transactions have been created."
 
-
-50.times do 
+10.times do 
     Payment.create!(
         account_id: Faker::Number.between(from: Account.first.id, to: Account.last.id),
         date: Faker::Date.forward(days: 23),
