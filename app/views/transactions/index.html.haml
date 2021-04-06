@@ -1,14 +1,15 @@
 %h1 These are your transactions!
 %button= link_to "Create Transaction", new_account_transaction_path(@account)
 %button= link_to "Accounts", accounts_path(@account)
-%button= link_to "Payments", account_transaction_payments_path(@account, @transactions)
+%button= link_to "Payments", account_payments_path(@account, @payments)
 %ul
     - @transactions.each do |transaction|
-        %li= transaction.created_at
+        %li= format_date(transaction)
         %p= number_to_currency(transaction.amount)
         %p= transaction.description
-        %button= link_to "Add a Payment", new_account_transaction_payment_path(@account, transaction), class: "button"
+        %button= link_to "Add a Payment", new_account_payment_path(@account)
         %button= link_to "Take a Peek", account_transaction_path(@account, transaction)
+
 %br/
 %br/
 %br/
