@@ -1,7 +1,6 @@
 class TransactionsController < ApplicationController
     before_action :get_account
     before_action :find_transaction, only: [:show, :edit, :update, :destroy]
-    skip_before_action :get_account, only: [:big_spend]
 
 
     def index
@@ -42,9 +41,9 @@ class TransactionsController < ApplicationController
         redirect_to account_transactions_path(@account)
     end
 
-    def big_spend
-        @transaction = Transaction.biggest_purchase
-    end
+    # def big_spend
+        # @transaction = transaction.biggest_purchase
+    # end
     
 
     private
