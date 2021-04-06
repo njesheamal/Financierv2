@@ -19,7 +19,7 @@ User.create!(
     first_name: "Amal",
     last_name: "Abdu",
     email: "amal@email.com",
-    password: '12345678'
+    password: 'password'
 )
 
 5.times do 
@@ -27,7 +27,7 @@ User.create!(
         first_name: Faker::Name.first_name,
         last_name: Faker::Name.unique.last_name,
         email: Faker::Internet.unique.free_email,
-        password: '12345678'
+        password: 'password'
     )
 end
 
@@ -48,24 +48,23 @@ end
 
 puts "#{Account.count} Accounts have been created."
 
-12.times do
-    Statement.create!(
-        account_id: Faker::Number.between(from: Account.first.id, to: Account.last.id),
-        balance: Faker::Number.between(from: Account.first.credit_limit, to: Account.last.credit_limit),
-        description: Faker::Hipster.sentences(number: 1),
-        min_payment: Faker::Commerce.price,
-        fees: "0",
-        payment_duedate: Faker::Date.forward(days: 30)
-    )
-end
 
-puts "#{Statement.count} Statements have been created!"
 
-12.times do 
-    Category.create!(
-        title: Faker::Commerce.department(max: 1, fixed_amount: true)
-    )
-end
+Category.create!(
+    title: "Fashion"
+)
+Category.create!(
+    title: "Electronics & Media"
+)
+Category.create!(
+    title: "Entertainment"
+)
+Category.create!(
+    title: "Home & Auto"
+)
+Category.create!(
+    title: "Personal Care"
+)
 puts "#{Category.count} Categories have been created."
 
 
@@ -75,20 +74,11 @@ puts "#{Category.count} Categories have been created."
         category_id: Faker::Number.between(from: Category.first.id, to: Category.last.id),
         amount: Faker::Commerce.price,
         description: Faker::Commerce.product_name,
-        date: Faker::Date.backward(days: 23)   #! why?
+        date: Faker::Date.backward(days: 15)
 
     )
 end
 
 puts "#{Transaction.count} Transactions have been created."
 
-10.times do 
-    Payment.create!(
-        account_id: Faker::Number.between(from: Account.first.id, to: Account.last.id),
-        date: Faker::Date.forward(days: 23),
-        amount: Faker::Commerce.price
-    )
-end
-
-puts "#{Payment.count} Payments have been created."
 

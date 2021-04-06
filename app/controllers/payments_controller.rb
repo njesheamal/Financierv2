@@ -7,25 +7,24 @@ class PaymentsController < ApplicationController
     end 
 
     def show
-        @transaction = Transaction.find_by(id: params[:transaction_id])
+        # @transaction = Transaction.find_by(id: params[:transaction_id])
     end
     
     def new
-        @transaction = Transaction.find_by(id: params[:transaction_id])
-        @account = Account.find_by(id: params[:account_id])
-        @payment = @transaction.payments.build
+        # @transaction = Transaction.find_by(id: params[:transaction_id])
+        @payment = @account.payments.build
     end
 
     def create
         #? What happens if a users payment, exceeds the transaction amount?
         #? What happens if the payment date is wrong?
-        @transaction = Transaction.find_by(id: params[:transaction_id])
+        # @transaction = Transaction.find_by(id: params[:transaction_id])
         @payment = Payment.new(payment_params)
         
         if @payment.save
             @transaction.payments << @payment
             flash[:success] = "You successfully made a payment!"
-            redirect_to account_transaction_payment_path(@account, @transaction, @payment)
+            redirect_to account__payment_path(@account, @payment)
         else
             flash[:error] = "Something went wrong"
             render 'new'
@@ -38,7 +37,7 @@ class PaymentsController < ApplicationController
     def update
         if @payment.update(payment_params)
           flash[:success] = "Your payment was successfully updated"
-          redirect_to account_payment_path(@account)
+          redirect_to account_payment_path(@account, @payment)
         else
           flash[:error] = "Something went wrong"
           render 'edit'
@@ -66,7 +65,7 @@ class PaymentsController < ApplicationController
     end
 
     def payment_params
-        params.require(:payment).permit(:account_id, :transaction_ids, :date, :amount, :description)
+        params.require(:payment).permit(:account_id, :date, :amount, :description)
     end
     
 end
