@@ -9,6 +9,7 @@ class Account < ApplicationRecord
   # scope :biggest_purchase, -> { joins(:transactions).merge(Transaction.most_expensive_transaction)}
 
   scope :active, -> { where(:status => true)}
+  scope :most_frequent_category, -> { joins(:transactions).merge(Transaction.most_category)}
 
   validates :name, presence: true, uniqueness: {message: "Nickname must be unique"}
   validates :account_number, uniqueness: {message: "Account number must be unique"}

@@ -5,5 +5,5 @@ class Payment < ApplicationRecord
 
   validates :amount, presence: {message: "Must have an amount"}
 
-  scope :paid, -> (amount) { where(:amount => amount )}
+  scope :total, -> (amount) { where(:amount => amount )}
 end
