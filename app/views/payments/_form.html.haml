@@ -1,7 +1,7 @@
-= simple_form_for ([@account, @transaction, @payment]) do |f|
+= simple_form_for ([@account, @payment]) do |f|
     = f.hidden_field :account_id, value: @account.id
     -# = f.hidden_field :due_date, value: set_due_date(@payment)
-    %p= f.input :amount, :input_html => {value: @transaction.amount}, :label => 'Payment Amount'
-    %p= f.input :description, :input_html => {value: @transaction.description}, :label => 'Item/Service Description'
+    %p= f.input :amount, :label => 'Payment Amount'
+    %p= f.input :description, :label => 'Item/Service Description'
     %p= f.date_field :date
     = f.button :submit

@@ -22,9 +22,9 @@ class PaymentsController < ApplicationController
         @payment = Payment.new(payment_params)
         
         if @payment.save
-            @transaction.payments << @payment
+            # @transaction.payments << @payment
             flash[:success] = "You successfully made a payment!"
-            redirect_to account__payment_path(@account, @payment)
+            redirect_to account_payment_path(@account, @payment)
         else
             flash[:error] = "Something went wrong"
             render 'new'

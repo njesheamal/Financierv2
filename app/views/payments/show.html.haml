@@ -1,10 +1,10 @@
 %h1 Your Payment!
-%p= @payment.amount
+%p= number_to_currency(@payment.amount)
 %p= @payment.description
 %br/
 %br/
 %br/
-%button= link_to "Payments", account_transaction_payments_path(@account, @transaction)
+%button= link_to "Payments", account_payments_path(@account)
 
 
 -# = link_to "Pay this off?", new_transaction_payment_path(@account), class: "button"
