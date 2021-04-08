@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
   def index
-    @category = Category.all
+    find_account
+    @categories = @account.categories.all
   end
 
   def show

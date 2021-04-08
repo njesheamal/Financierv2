@@ -1,0 +1,5 @@
+%h1 Your account's categories!
+
+- @categories.each do |category|
+  %p= category.title
+  %p= category.transactions_sum(@account) 
